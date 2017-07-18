@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>XXX Manage</title>
+  <script src = "Index.js "></script>
+  <script src = "indexdb.js" async ></script>
+  <link rel="icon" href="cropped-ccpc_logo_small-1-192x192.png" sizes="32x32" />
+  <link rel="stylesheet" href="index.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+  <article>
+    <header> XXX 成员管理系统 </header>
+    <nav>
+      <ul class="ul1">
+        <li><a href="#" onclick="Ttab1();" id="a1" class="a">增</a></li>
+        <li><a href="#" onclick="Ttab2();" id="a2" class="a">删</a></li>
+        <li><a href="#" onclick="Ttab3();" id="a3" class="a">改</a></li>
+        <li><a href="#" onclick="Ttab4();_Get();" id="a4" class="a">查</a></li>
+      </ul>
+    </nav>
+    <section>
+      <div id="s1">
+        <div class="add">
+          <div class="h">
+            添加成员
+          </div>
+          <input type="text" name="no"   id="t1"  required placeholder="输入学号"><br/>
+          <input type="text" name="name" id="t2" placeholder="输入姓名"><br/>
+          <input type="text" name="class" id="t3" placeholder="输入班级"><br/>
+          <input type="text" name="minzu" id="t4" placeholder="输入民族"><br/>
+          <input type="email" name="email" id="t5" placeholder="输入邮箱" ><br/>
+        </div>
+        <button type="button" onclick="Add()" name="button">执行</button>
+      </div>
+      <div id="s2">
+        <div class="delete">
+          <div class="h">
+            删除成员
+          </div>
+          <input type="text" name="no" id="d1" placeholder="输入学号"><br/>
+        </div>
+        <button type="button" onclick="Delete();" name="button">执行</button>
+      </div>
+      <div id="s3">
+        <div class="change">
+          <div class="h">
+            更改信息
+          </div>
+          <input type="text" name="n"  id="C1" placeholder="输入学号">
+            <button type="button" onclick="Findbak()" name="button">当前信息</button><br/>
+
+            <table width="100%" >
+              <tr>
+              <td>学号</td>
+              <td>姓名</td>
+              <td>民族</td>
+              <td>班级</td>
+              <td>mail</td>
+              </tr>
+            </table>
+            <br />
+            <table width="100%"  id="C2">
+            </table>
+            <input type="text" name="no"   id="c6"  required placeholder="输入学号" disabled>
+            <input type="text" name="name" id="c2" placeholder="更改后姓名">
+            <input type="text" name="class" id="c3" placeholder="更改后班级">
+            <input type="text" name="minzu" id="c4" placeholder="更改后民族">
+            <input type="email" name="email" id="c5" placeholder="更改后邮箱" >
+            </div>
+        <button type="button" onclick="uPdate();" name="button">执行</button>
+      </div>
+      <div id="s4">
+        <div class="select">
+          <div class="h">
+            查找成员
+          </div>
+          <input type="text" name="no" id="f1" placeholder="输入学号"><br/>
+          <div>
+            <table width="100%" >
+              <tr>
+              <td>学号</td>
+              <td>姓名</td>
+              <td>民族</td>
+              <td>班级</td>
+              <td>mail</td>
+              </tr>
+            </table>
+            <br />
+            <table width="100%"  id="d">
+            </table>
+          </div>
+        </div>
+        <button type="button" onclick="Find()" name="button">执行</button>
+      </div>
+      <div id="s5">
+        <div class="addteam">
+          <div class="hh">
+            添加队伍
+          </div>
+          <input type="text"   id="tt1"  required placeholder="队伍名称"><br/>
+          <input type="text"  id="tt2" placeholder="输入成员1学号"><br/>
+          <input type="text"  id="tt3" placeholder="输入成员2学号"><br/>
+          <input type="text"  id="tt4" placeholder="输入成员3学号"><br/>
+        </div>
+        <button type="button" onclick="AddTeam();" name="button">执行</button>
+      </div>
+      <div id="s6">
+        <div class="deleteTeam">
+          <div class="h">
+            解散队伍
+          </div>
+          <input type="text"  id="d2" placeholder="输入队伍名称"><br/>
+        </div>
+        <button type="button" onclick="DeleteTeam();" name="button">执行</button>
+      </div>
+      <div id="s7">
+        <div class="changeTeam">
+          <div class="h">
+            更改信息
+          </div>
+          <input type="text" id="CT1" placeholder="输入队伍名">
+            <button type="button" onclick="FindTeambak();">队伍信息</button><br/>
+
+            <table width="100%" >
+              <tr>
+              <td>队伍名</td>
+              <td>成员一</td>
+              <td>成员二</td>
+              <td>成员三</td>
+              </tr>
+            </table>
+            <br />
+            <table width="100%"  id="CT2">
+            </table>
+            <input type="text"  id="cT2"  required placeholder="队伍名" disabled>
+            <input type="text"  id="cT3" placeholder="新成员一学号">
+            <input type="text"  id="cT4" placeholder="新成员二学号">
+            <input type="text"  id="cT5" placeholder="新成员三学号">
+            </div>
+        <button type="button" onclick="uPdateTeam()" name="button">执行</button>
+      </div>
+      <div id="s8" >
+        <div class="selectTeam">
+          <div class="h">
+            查找队伍
+          </div>
+          <input type="text" id="ST0" placeholder="输入队伍名"><br/>
+          <div>
+            <table width="100%" >
+              <tr>
+              <td id="ST1">队伍名</td>
+              <td>成员一</td>
+              <td>成员二</td>
+              <td>成员三</td>
+
+              </tr>
+            </table>
+            <br />
+            <table width="100%"  id="ST">
+            </table>
+          </div>
+        </div>
+        <button type="button" onclick="FindTeambak_();" name="button">执行</button>
+      </div>
+
+      <aside class="nav1">
+        <div class="aDd" id="A1" >
+          <a href="#" onclick="Ttab1();" >添加队员</a>
+        </div>
+        <div class="aDd" id="A2">
+          <a href="#" onclick="Ttab5();" >添加队伍</a>
+        </div>
+      </aside>
+      <aside class="nav2">
+        <div class="aDd" id="D1" >
+          <a href="#" onclick="Ttab2();" >删除队员</a>
+        </div>
+        <div class="aDd" id="D2">
+          <a href="#" onclick="Ttab6();" >删除队伍</a>
+        </div>
+      </aside>
+      <aside class="nav3">
+        <div class="aDd" id="CC1" >
+          <a href="#" onclick="Ttab3();" >更改队员信息</a>
+        </div>
+        <div class="aDd" id="CC2">
+          <a href="#" onclick="Ttab7();" >更改队伍信息</a>
+        </div>
+      </aside>
+      <aside class="nav4">
+        <div class="aDd" id="F1" >
+          <a href="#" onclick="Ttab4();" >查询队员信息</a>
+        </div>
+        <div class="aDd" id="F2">
+            <a href="#" onclick="Ttab8();_GetTeam()" >查询队伍信息</a>
+        </div>
+      </aside>
+
+    </section>
+    <footer> Copyright ©2017 by 凌海森</footer>
+  </article>
+</body>
+</html>
